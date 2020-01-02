@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+         <form action="" method="post" novalidate>
+             {{ form.hidden_tag() }}
+             <p style="font-size:1.2rem">Please enter mobile phone number in international format.<br>
+                +[countrycode][mobile number without leading 0]<br>
+                e.g.: +61421123456</p>
+            <p style="font-size:1.2rem">
+                Note backend uses a Twilio Trial account which only allows for one verified number to send/receive messeges from the virtual US number.<br>
+                To test the system please enter +37258483710.<br>
+                Any other number will generate an error from Twilio API (but you can try those too).</p>
+             <p style="font-size:1.2rem">
+                 {{ form.phone.label }}<br>
+                 {{ form.phone(size=32) }}
+                 {% for error in form.phone.errors %}
+                 <span style="color: red;">[{{ error }}]</span>
+                 {% endfor %}
+            </p>
+            <p>{{ form.submit() }}</p>
+            </form>
+{% endblock %}

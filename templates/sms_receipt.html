@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+        {% if error_message == None %}
+        <h1>SMS Sent Successfully</h1>
+        {% else %}
+        <h1>SMS Failed</h1>
+        {% endif %}
+        <p style="font-size:1.2rem"><u><b>Your Sms Receipt:</b></u><br>
+                                    <b>From: </b>{{ from_ }}<br>
+                                    <b>To: </b>{{ to }}<br>
+                                    <b>Message: </b>{{ body }}<br>
+                                    <b>Date Sent: </b>{{ date_sent }}<br>
+                                    <b>Error Message: </b>
+                                    {% if error_message != None %}
+                                    <span style="color: red;">{{ error_message }}</span><br>
+                                    {% else %}
+                                    {{ error_message }}<br>
+                                    {% endif %}
+        </p>
+        {% if error_message == None %}
+        <p><a style="font-size:1.2rem" href="http://sms.sellaite.com/index.php?phone=0037258483710">
+            Check received message here</p>
+        {% endif %}
+{% endblock %}

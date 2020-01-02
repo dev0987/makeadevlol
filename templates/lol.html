@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p style="font-size:1.5rem;">
+    {% for para in text %}
+    {{para}}<br>
+    {% endfor %}
+</p>
+{% endblock %}
